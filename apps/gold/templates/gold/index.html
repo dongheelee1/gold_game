@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Gold Game</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'gold/style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="top">
+		<h1 class="title">The Great Gold Game</h1>
+		<p>Gold Count</p>
+		<div>
+			{{request.session.gold_count}}
+		</div>
+	</div>
+	<div id="middle">
+		<div class="box">
+			<h3>Farm</h3>
+			<p>(Earns 10-20 golds)</p>
+			<form action="/process_money" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="building" value="farm">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>
+		<div class="box">
+			<h3>Cave</h3>
+			<p>(Earns 5-10 golds)</p>
+			<form action="/process_money" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="building" value="cave">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div> 
+		<div class="box">
+			<h3>House</h3>
+			<p>(Earns 2-5 golds)</p>
+			<form action="/process_money" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="building" value="house">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div> 
+		<div class="box">
+			<h3>Casino</h3>
+			<p>(Earns/takes 0-50 golds)</p>
+			<form action="/process_money" method="post">
+				{% csrf_token %}
+				<input type="hidden" name="building" value="casino">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>
+	</div>
+	<div id="footer">
+		<h2 class="title">Activities</h2>
+		<div id="textarea">
+		{% for message in request.session.gold_messages %}
+			{% if 'won' in message %}
+				<p class="green">{{message}}</p>
+			{% endif %}
+			{% if 'lost' in message %}
+				<p class="red">{{message}}</p>
+			{% endif %}
+		{% endfor %}
+		</div>
+		<a href="/reset"><button>RESET</button></a>
+	</div> 
+</body>
+</html>

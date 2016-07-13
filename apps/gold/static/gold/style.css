@@ -1,0 +1,57 @@
+*{
+	margin: auto;
+	padding: auto;
+}
+
+body{
+	width: 100%;
+	background-image: url("imgs/money.jpg");
+}
+	#top div{
+		border: 1px solid black;
+		width: 200px;
+		height: 50px;
+		margin: 10px 0px 10px 0px;
+		display: inline-block;
+		background-color: white;
+		font-size: 24px;
+	}
+	#top h1, div{
+		text-align: center;
+	}
+	#top p{
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+		font-size: 24px;
+		color: yellow;
+	}
+.box{
+	display: inline-block;
+	padding: 5%;
+	border: 1px solid black;
+	background-color: gold;
+	opacity: .8;
+}
+
+#textarea{
+	height: 250px;
+	width: 700px;
+	background-color: white;
+	overflow: scroll;
+	border: 3px solid gold;
+}
+.title{
+	color: yellow;
+	text-shadow: -1px 0 black, 0 5px black, 1px 0 black, 0 -1px black;
+}
+.green{
+	color: green;
+}
+.red{
+	color: red;
+}
+	#footer button{
+		margin: 30px;
+		width: 300px;
+		height: 70px;
+		background-color: gold;
+	}
